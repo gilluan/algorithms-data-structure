@@ -1,10 +1,8 @@
 (() => {
-	//Revertendo uma lista usando o lodash.
-    let listRevert = (lists, new_list = []) => {
-        if(lists[0] != 0 && !lists[0]) return new_list;
-        return listRevert(_.tail(lists), [_.head(lists)].concat(new_list))
+
+    let reverter = ([head, ...tail], result = []) => {
+        if(head != 0 && !head) return result;
+        return reverter(tail, [...[head], ...result]);
     }
-
-    console.log(listRevert([0,1,2,3]));
-
+    console.log(reverter([0,1,2,3,4,5,6])); //6,5,4,3,2,1
 })()
